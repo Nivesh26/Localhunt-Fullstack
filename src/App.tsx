@@ -1,0 +1,55 @@
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './Pages/home'
+import New from './Pages/newproduct'
+import Login from './Logins/login'
+import Signup from './Logins/signup'
+import Shop from './Pages/shop'
+import About from './Pages/about'
+import Contact from './Pages/contact'
+import Cart from './Pages/Cart'
+import Productdetail from './Pages/Productdetail'
+import Profile from './Pages/Profie'
+import Sellersignup from './Logins/SellerSignup'
+import AdminDashboard from './AdminPages/AdminDashboard'
+import Vendorpipeline from './AdminPages/Vendorpipeline'
+import AdminVender from './AdminPages/AdminVendor'
+import VendorApprove from './AdminPages/VendorApprove'
+import SellerLogin from './Logins/SellerLogin'
+import AdminProduct from './AdminPages/AdminProduct'
+
+const App = () => {
+  return (
+   <BrowserRouter>
+   <Routes>
+    {/* User Pages */}
+      <Route path="/" element={<Home/>} />
+      <Route path="/new" element={<New/>}/>
+      <Route path="/shop" element={<Shop/>}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/contact" element={<Contact/>}/>
+      <Route path="/cart" element={<Cart/>}/>
+      <Route path="/productdetail" element={<Productdetail/>}/>
+      <Route path="/profile" element={<Profile/>}/>
+
+      {/* Login and Signup */}
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+
+      {/* Seller Login and Signup */}
+      <Route path="/sellersignup" element={<Sellersignup/>}/>
+      <Route path="/sellerlogin" element={<SellerLogin/>}/>
+
+      {/* Admin Pages */}
+        <Route path="/admindashboard" element={<AdminDashboard/>}/>
+        <Route path="/adminvendorpipeline" element={<Vendorpipeline/>}/>
+        <Route path="/adminvendors" element={<AdminVender/>}/>
+        <Route path="/adminvendorsapprove" element={<VendorApprove/>}/>
+        <Route path="/adminproducts" element={<AdminProduct/>}/>
+   </Routes> 
+   </BrowserRouter>
+
+  )
+}
+
+export default App

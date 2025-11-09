@@ -1,0 +1,89 @@
+import {
+  HomeIcon,
+  BuildingStorefrontIcon,
+  CubeIcon,
+  ShoppingBagIcon,
+  CurrencyDollarIcon,
+  LifebuoyIcon,
+  ShieldCheckIcon,
+  UserPlusIcon,
+} from '@heroicons/react/24/solid'
+import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid'
+import logo from '../assets/Local Hunt Logo NoBG.png'
+import profileImage from '../assets/Nivesh.png'
+import { Link } from 'react-router-dom'
+
+const navLinks = [
+  { label: 'Overview', icon: HomeIcon, to: '/admindashboard' },
+  { label: 'Vendors', icon: BuildingStorefrontIcon, to: '/adminvendors' },
+  { label: 'Vendor Pipeline', icon: UserPlusIcon, to: '/adminvendorpipeline' },
+  { label: 'Approve Vendors', icon: ShieldCheckIcon, to: '/adminvendorsapprove  ' },
+  { label: 'Products', icon: CubeIcon, to: '/adminproducts' },
+  { label: 'Orders', icon: ShoppingBagIcon },
+  { label: 'Payouts', icon: CurrencyDollarIcon },
+  { label: 'Support', icon: LifebuoyIcon },
+  { label: 'Settings', icon: ShieldCheckIcon },
+]
+
+
+
+const AdminNavbar = () => {
+  return (
+    <aside className="hidden w-64 lg:block">
+      <div className="sticky top-8 space-y-6">
+        <div className="flex items-center gap-3 rounded-2xl bg-white p-5 shadow-sm">
+          <img src={logo} alt="Local Hunt" className="h-12 w-12 rounded-xl object-contain" />
+          <div>
+            <p className="text-xs uppercase tracking-wide text-gray-400">Local Hunt</p>
+            <h2 className="text-lg font-semibold text-gray-900">Marketplace Admin</h2>
+          </div>
+        </div>
+
+        <div className="rounded-2xl bg-white p-6 shadow-sm">
+          <div className="flex items-center gap-3">
+            <img src={profileImage} alt="Profile" className="h-12 w-12 rounded-full object-cover" />
+            <div>
+              <p className="text-sm text-gray-500">Marketplace Admin</p>
+              <p className="text-lg font-semibold text-gray-900">Super Admin</p>
+            </div>
+          </div>
+          
+          <button className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700">
+            <ArrowRightStartOnRectangleIcon className="h-4 w-4" />
+            Switch Account
+          </button>
+        </div>
+
+        <nav className="rounded-2xl bg-white p-6 shadow-sm">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Control Center</h3>
+          <ul className="mt-4 space-y-2">
+            {navLinks.map(link => (
+              <li key={link.label}>
+                {link.to ? (
+                  <Link
+                    to={link.to}
+                    className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-red-50 hover:text-red-600"
+                  >
+                    <link.icon className="h-5 w-5" />
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-red-50 hover:text-red-600">
+                    <link.icon className="h-5 w-5" />
+                    {link.label}
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+  
+
+       
+      </div>
+    </aside>
+  )
+}
+
+export default AdminNavbar
