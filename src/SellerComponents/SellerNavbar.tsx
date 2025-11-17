@@ -14,7 +14,7 @@ import profileImage from '../assets/Nivesh.png'
 const navLinks = [
   { label: 'Overview', icon: HomeIcon, to: '/sellerdashboard' },
   { label: 'Products', icon: CubeIcon, to: '/sellerproduct' },
-  { label: 'Orders', icon: ShoppingBagIcon, to: '/seller/orders' },
+  { label: 'Orders', icon: ShoppingBagIcon, to: '/sellerorder' },
   { label: 'Payouts', icon: BanknotesIcon, to: '/seller/payouts' },
   { label: 'Messages', icon: ChatBubbleLeftRightIcon, to: '/seller/messages' },
   { label: 'Settings', icon: Cog6ToothIcon, to: '/seller/settings' },
