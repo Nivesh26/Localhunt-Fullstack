@@ -1,13 +1,13 @@
 import AdminNavbar from '../AdminComponents/AdminNavbar'
 import {
-  UserPlusIcon,
-  CheckBadgeIcon,
-  ClockIcon,
-  XMarkIcon,
-  ArrowUpOnSquareIcon,
-  ShieldCheckIcon,
-  ArrowTrendingUpIcon,
-} from '@heroicons/react/24/solid'
+  FaUserPlus,
+  FaCheckCircle,
+  FaClock,
+  FaTimes,
+  FaUpload,
+  FaShieldAlt,
+  FaChartLine,
+} from 'react-icons/fa'
 
 const pendingApplications = [
   {
@@ -31,10 +31,10 @@ const pendingApplications = [
 ]
 
 const checklistItems = [
-  { label: 'Verify business credentials', icon: ShieldCheckIcon },
-  { label: 'Review product catalog & compliance', icon: CheckBadgeIcon },
-  { label: 'Assess fulfillment & logistics readiness', icon: ClockIcon },
-  { label: 'Enable payouts & tax configuration', icon: ArrowUpOnSquareIcon },
+  { label: 'Verify business credentials', icon: FaShieldAlt },
+  { label: 'Review product catalog & compliance', icon: FaCheckCircle },
+  { label: 'Assess fulfillment & logistics readiness', icon: FaClock },
+  { label: 'Enable payouts & tax configuration', icon: FaUpload },
 ]
 
 const Vendorpipeline = () => {
@@ -52,7 +52,7 @@ const Vendorpipeline = () => {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 {/* <button className="flex items-center gap-2 rounded-xl bg-red-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-red-700">
-                  <UserPlusIcon className="h-5 w-5" />
+                  <FaUserPlus className="h-5 w-5" />
                   Add New Vendor
                 </button>
                 <button className="rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
@@ -69,7 +69,7 @@ const Vendorpipeline = () => {
                   <h2 className="text-lg font-semibold text-gray-900">Pending Applications</h2>
                   <p className="text-sm text-gray-500">Review documents and risk profile before approval.</p>
                 </div>
-                <ClockIcon className="h-6 w-6 text-amber-500" />
+                <FaClock className="h-6 w-6 text-amber-500" />
               </div>
 
               <div className="mt-5 space-y-4">
@@ -98,14 +98,14 @@ const Vendorpipeline = () => {
 
                     <div className="mt-4 flex items-center gap-2">
                       <button className="flex items-center gap-2 rounded-lg bg-green-500 px-3 py-2 text-xs font-semibold text-white hover:bg-green-600">
-                        <CheckBadgeIcon className="h-4 w-4" />
+                        <FaCheckCircle className="h-4 w-4" />
                         Approve Vendor
                       </button>
                       <button className="flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50">
                         Request Docs
                       </button>
                       <button className="flex items-center gap-2 rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50">
-                        <XMarkIcon className="h-4 w-4" />
+                        <FaTimes className="h-4 w-4" />
                         Reject
                       </button>
                     </div>
@@ -137,7 +137,7 @@ const Vendorpipeline = () => {
                 <h2 className="text-lg font-semibold text-gray-900">Pipeline Health</h2>
                 <p className="text-sm text-gray-500">Today’s onboarding metrics across the funnel.</p>
               </div>
-              <ArrowTrendingUpIcon className="h-6 w-6 text-green-500" />
+              <FaChartLine className="h-6 w-6 text-green-500" />
             </div>
 
             <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">

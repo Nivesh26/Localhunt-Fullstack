@@ -1,6 +1,6 @@
 import React from "react";
 import profile from "../assets/Local Hunt Logo NoBG.png";
-import { MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/16/solid";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -40,11 +40,11 @@ const Header = () => {
             placeholder="Search..."
             className="pl-10 pr-4 py-2 border rounded-full text-sm"
           />
-          <MagnifyingGlassIcon className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
+          <FaSearch className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
         </div>
 
         <Link to="/cart">
-        <ShoppingCartIcon className="w-6 h-6 text-gray-700 hover:text-red-600 cursor-pointer" />
+        <FaShoppingCart className="w-6 h-6 text-gray-700 hover:text-red-600 cursor-pointer" />
         </Link>
         {/* Login Link */}
         <Link to="/login" className="text-gray-700 hover:text-red-600 font-medium">

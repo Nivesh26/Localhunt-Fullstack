@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import {
-  BellIcon,
-  EnvelopeIcon,
-  KeyIcon,
-  ShieldCheckIcon,
-  DevicePhoneMobileIcon,
-  UserCircleIcon,
-  BuildingStorefrontIcon,
-  BanknotesIcon,
-  TruckIcon,
-} from '@heroicons/react/24/outline'
+  FaBell,
+  FaEnvelope,
+  FaKey,
+  FaShieldAlt,
+  FaMobileAlt,
+  FaUserCircle,
+  FaStore,
+  FaMoneyBillWave,
+  FaTruck,
+} from 'react-icons/fa'
 import SellerNavbar from '../SellerComponents/SellerNavbar'
 
 const notificationSettings = [
@@ -68,7 +68,7 @@ const SellerSetting = () => {
               <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-red-50 p-3">
-                    <BuildingStorefrontIcon className="h-6 w-6 text-red-500" />
+                    <FaStore className="h-6 w-6 text-red-500" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-lg font-semibold text-gray-900">Store information</h2>
@@ -128,7 +128,7 @@ const SellerSetting = () => {
               <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-blue-50 p-3">
-                    <UserCircleIcon className="h-6 w-6 text-blue-500" />
+                    <FaUserCircle className="h-6 w-6 text-blue-500" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-lg font-semibold text-gray-900">Profile details</h2>
@@ -170,7 +170,7 @@ const SellerSetting = () => {
               <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-emerald-50 p-3">
-                    <TruckIcon className="h-6 w-6 text-emerald-500" />
+                    <FaTruck className="h-6 w-6 text-emerald-500" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-lg font-semibold text-gray-900">Shipping & policies</h2>
@@ -205,7 +205,7 @@ const SellerSetting = () => {
               <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-amber-50 p-3">
-                    <ShieldCheckIcon className="h-6 w-6 text-amber-600" />
+                    <FaShieldAlt className="h-6 w-6 text-amber-600" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-lg font-semibold text-gray-900">Security</h2>
@@ -216,7 +216,7 @@ const SellerSetting = () => {
                     <div className="mt-6 space-y-5">
                       <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 p-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="flex items-start gap-3">
-                          <KeyIcon className="mt-0.5 h-5 w-5 text-gray-500" />
+                          <FaKey className="mt-0.5 h-5 w-5 text-gray-500" />
                           <div>
                             <p className="text-sm font-semibold text-gray-900">Change password</p>
                             <p className="text-sm text-gray-500">
@@ -231,7 +231,7 @@ const SellerSetting = () => {
 
                       <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 p-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="flex items-start gap-3">
-                          <DevicePhoneMobileIcon className="mt-0.5 h-5 w-5 text-gray-500" />
+                          <FaMobileAlt className="mt-0.5 h-5 w-5 text-gray-500" />
                           <div>
                             <p className="text-sm font-semibold text-gray-900">Two-factor authentication</p>
                             <p className="text-sm text-gray-500">
@@ -259,7 +259,7 @@ const SellerSetting = () => {
               <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-yellow-50 p-3">
-                    <BellIcon className="h-6 w-6 text-yellow-500" />
+                    <FaBell className="h-6 w-6 text-yellow-500" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-lg font-semibold text-gray-900">Notification preferences</h2>
@@ -272,7 +272,7 @@ const SellerSetting = () => {
                           className="flex gap-3 rounded-2xl border border-gray-200 p-4 transition hover:border-red-200"
                         >
                           <div className="h-10 w-10 shrink-0 rounded-xl bg-red-50 p-2">
-                            <EnvelopeIcon className="h-6 w-6 text-red-500" />
+                            <FaEnvelope className="h-6 w-6 text-red-500" />
                           </div>
                           <div className="flex-1">
                             <p className="text-sm font-semibold text-gray-900">{option.label}</p>
@@ -299,7 +299,7 @@ const SellerSetting = () => {
               <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-emerald-50 p-3">
-                    <BanknotesIcon className="h-6 w-6 text-emerald-500" />
+                    <FaMoneyBillWave className="h-6 w-6 text-emerald-500" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-lg font-semibold text-gray-900">Payment settings</h2>

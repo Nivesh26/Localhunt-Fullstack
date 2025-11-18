@@ -1,21 +1,21 @@
 import {
-  CubeIcon,
-  CurrencyDollarIcon,
-  ShieldCheckIcon,
-  BuildingStorefrontIcon,
-  TicketIcon,
-  BellIcon,
-  MagnifyingGlassIcon,
-} from '@heroicons/react/24/solid'
-import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid'
+  FaCube,
+  FaDollarSign,
+  FaShieldAlt,
+  FaStore,
+  FaTicketAlt,
+  FaBell,
+  FaSearch,
+  FaSignOutAlt,
+} from 'react-icons/fa'
 import AdminNavbar from '../AdminComponents/AdminNavbar'
 
 const AdminDashboard = () => {
   const statCards = [
-    { label: 'Total Vendors', value: '10',  icon: BuildingStorefrontIcon, color: 'bg-red-500' },
-    { label: 'Active Products', value: '18',  icon: CubeIcon, color: 'bg-blue-500' },
-    { label: 'GMV (30d)', value: 'NRP 4000',  icon: CurrencyDollarIcon, color: 'bg-green-500' },
-    { label: 'Pending Verifications', value: '32', icon: ShieldCheckIcon, color: 'bg-amber-500' },
+    { label: 'Total Vendors', value: '10',  icon: FaStore, color: 'bg-red-500' },
+    { label: 'Active Products', value: '18',  icon: FaCube, color: 'bg-blue-500' },
+    { label: 'GMV (30d)', value: 'NRP 4000',  icon: FaDollarSign, color: 'bg-green-500' },
+    { label: 'Pending Verifications', value: '32', icon: FaShieldAlt, color: 'bg-amber-500' },
   ]
 
   const topVendors = [
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="relative w-full sm:w-64">
-                  <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                  <FaSearch className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
                     placeholder="Search vendors, orders, products..."
@@ -65,12 +65,12 @@ const AdminDashboard = () => {
                 </div>
 
                 <button className="flex items-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700">
-                  <BellIcon className="h-5 w-5" />
+                  <FaBell className="h-5 w-5" />
                   Alerts
                 </button>
 
                 <button className="flex items-center gap-2 rounded-xl border border-red-200 px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-50">
-                  <ArrowRightStartOnRectangleIcon className="h-5 w-5" />
+                  <FaSignOutAlt className="h-5 w-5" />
                   Log Out
                 </button>
               </div>

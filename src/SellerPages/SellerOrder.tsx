@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import {
-  FunnelIcon,
-  MagnifyingGlassIcon,
-  PaperAirplaneIcon,
-  PrinterIcon,
-} from '@heroicons/react/24/outline'
-import { CheckCircleIcon, ClockIcon, ExclamationTriangleIcon } from '@heroicons/react/24/solid'
+  FaFilter,
+  FaSearch,
+  FaPaperPlane,
+  FaPrint,
+  FaCheckCircle,
+  FaClock,
+  FaExclamationTriangle,
+} from 'react-icons/fa'
 import SellerNavbar from '../SellerComponents/SellerNavbar'
 
 const orders = [
@@ -13,7 +15,7 @@ const orders = [
     id: '#S-9827',
     customer: 'Sanjay Gurung',
     items: 3,
-    total: 'NRs 3,450',
+    total: 'NRP 3,450',
     status: 'Ready to ship',
     paymentStatus: 'Online',
     shipping: 'Pathao',
@@ -26,7 +28,7 @@ const orders = [
     id: '#S-9822',
     customer: 'Meena KC',
     items: 1,
-    total: 'NRs 1,800',
+    total: 'NRP 1,800',
     status: 'Delivered',
     paymentStatus: 'Cash',
     shipping: 'Courier',
@@ -39,7 +41,7 @@ const orders = [
     id: '#S-9819',
     customer: 'Global Crafts UK',
     items: 7,
-    total: 'NRs 12,900',
+    total: 'NRP 12,900',
     status: 'In transit',
     paymentStatus: 'Online',
     shipping: 'Courier',
@@ -52,7 +54,7 @@ const orders = [
     id: '#S-9813',
     customer: 'Solar Collective',
     items: 4,
-    total: 'NRs 6,400',
+    total: 'NRP 6,400',
     status: 'Awaiting payment',
     paymentStatus: 'Cash',
     shipping: 'Pathao',
@@ -113,7 +115,7 @@ const SellerOrder = () => {
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="relative w-full sm:w-64">
-                  <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <FaSearch className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                   <input
                     value={search}
                     onChange={e => setSearch(e.target.value)}
@@ -123,11 +125,11 @@ const SellerOrder = () => {
                   />
                 </div>
                 <button className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
-                  <FunnelIcon className="h-4 w-4" />
+                  <FaFilter className="h-4 w-4" />
                   Filter
                 </button>
                 <button className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700">
-                  <PaperAirplaneIcon className="h-4 w-4" />
+                  <FaPaperPlane className="h-4 w-4" />
                   Create shipment
                 </button>
               </div>
@@ -139,7 +141,7 @@ const SellerOrder = () => {
               <div className="rounded-2xl border border-gray-100 p-4">
                 <div className="flex items-center gap-3">
                   <div className="rounded-xl bg-emerald-50 p-3 text-emerald-600">
-                    <CheckCircleIcon className="h-6 w-6" />
+                    <FaCheckCircle className="h-6 w-6" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wide text-gray-500">Delivered</p>
@@ -151,7 +153,7 @@ const SellerOrder = () => {
               <div className="rounded-2xl border border-gray-100 p-4">
                 <div className="flex items-center gap-3">
                   <div className="rounded-xl bg-amber-50 p-3 text-amber-600">
-                    <ClockIcon className="h-6 w-6" />
+                    <FaClock className="h-6 w-6" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wide text-gray-500">Ready to ship</p>
@@ -163,7 +165,7 @@ const SellerOrder = () => {
               <div className="rounded-2xl border border-gray-100 p-4">
                 <div className="flex items-center gap-3">
                   <div className="rounded-xl bg-orange-50 p-3 text-orange-600">
-                    <ExclamationTriangleIcon className="h-6 w-6" />
+                    <FaExclamationTriangle className="h-6 w-6" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wide text-gray-500">Issues</p>
@@ -205,7 +207,7 @@ const SellerOrder = () => {
                 <p className="text-sm text-gray-500">Latest orders from your store, updated in real time.</p>
               </div>
               <button className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50">
-                <PrinterIcon className="h-4 w-4" />
+                <FaPrint className="h-4 w-4" />
                 Print packing slips
               </button>
             </div>

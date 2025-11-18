@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react';
 import {
-  MagnifyingGlassIcon,
-  FunnelIcon,
-  PlusIcon,
-  EllipsisVerticalIcon,
-  StarIcon,
-  CheckCircleIcon,
-  ExclamationTriangleIcon,
-  CubeIcon,
-  TrashIcon,
-} from '@heroicons/react/24/solid';
+  FaSearch,
+  FaFilter,
+  FaPlus,
+  FaEllipsisV,
+  FaStar,
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaCube,
+  FaTrash,
+} from 'react-icons/fa';
 import AdminNavbar from '../AdminComponents/AdminNavbar';
 import bowl from '../assets/Bowl.png';
 import honey from '../assets/P2.png';
@@ -167,28 +167,28 @@ const AdminProduct = () => {
         label: 'Total Products',
         value: total,
         description: 'Available in catalog',
-        icon: CubeIcon,
+        icon: FaCube,
         color: 'bg-blue-500',
       },
       {
         label: 'Avg. Price',
         value: `NRP ${averagePrice.toLocaleString()}`,
         description: 'Across all products',
-        icon: CheckCircleIcon,
+        icon: FaCheckCircle,
         color: 'bg-green-500',
       },
       {
         label: 'Vendors',
         value: uniqueVendors,
         description: 'Supplying catalog',
-        icon: ExclamationTriangleIcon,
+        icon: FaExclamationTriangle,
         color: 'bg-amber-500',
       },
       {
         label: 'Top Rated',
         value: topRated ? `${topRated.rating.toFixed(1)}/5` : 'N/A',
         description: topRated ? topRated.name : 'No ratings yet',
-        icon: EllipsisVerticalIcon,
+        icon: FaEllipsisV,
         color: 'bg-slate-500',
       },
     ];
@@ -210,7 +210,7 @@ const AdminProduct = () => {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="relative w-full sm:w-64">
-                  <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                  <FaSearch className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
                     value={searchTerm}
@@ -221,11 +221,11 @@ const AdminProduct = () => {
                 </div>
                 <div className="flex gap-2">
                   <button className="flex items-center gap-2 rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
-                    <FunnelIcon className="h-5 w-5" />
+                    <FaFilter className="h-5 w-5" />
                     Advanced Filters
                   </button>
                   <button className="flex items-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700">
-                    <PlusIcon className="h-5 w-5" />
+                    <FaPlus className="h-5 w-5" />
                     Add Product
                   </button>
                 </div>
@@ -335,7 +335,7 @@ const AdminProduct = () => {
                       <td className="py-4 pr-6">
                         {product.rating > 0 ? (
                           <span className="inline-flex items-center gap-1 text-sm font-semibold text-gray-800">
-                            <StarIcon className="h-4 w-4 text-yellow-500" />
+                            <FaStar className="h-4 w-4 text-yellow-500" />
                             {product.rating.toFixed(1)}
                           </span>
                         ) : (
@@ -348,7 +348,7 @@ const AdminProduct = () => {
                           onClick={() => handleDelete(product.id)}
                           className="inline-flex items-center gap-2 rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-50"
                         >
-                          <TrashIcon className="h-4 w-4" />
+                          <FaTrash className="h-4 w-4" />
                           Delete
                         </button>
                       </td>

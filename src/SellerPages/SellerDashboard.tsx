@@ -1,30 +1,30 @@
 import {
-  BanknotesIcon,
-  CubeIcon,
-  ShoppingBagIcon,
-  StarIcon,
-  ArrowTrendingUpIcon,
-} from '@heroicons/react/24/solid'
+  FaMoneyBillWave,
+  FaCube,
+  FaShoppingBag,
+  FaStar,
+  FaChartLine,
+} from 'react-icons/fa'
 import SellerNavbar from '../SellerComponents/SellerNavbar'
 
 const SellerDashboard = () => {
   const statCards = [
-    { label: 'Live products', value: '14', change: '+3 this week', icon: CubeIcon, color: 'bg-red-500' },
-    { label: 'Orders (30 days)', value: '128', change: '+24%', icon: ShoppingBagIcon, color: 'bg-amber-500' },
-    { label: 'Payout ready', value: 'NRs 42,300', change: 'Next cycle: Friday', icon: BanknotesIcon, color: 'bg-emerald-500' },
-    { label: 'Store rating', value: '4.8', change: 'Based on 86 reviews', icon: StarIcon, color: 'bg-blue-500' },
+    { label: 'Live products', value: '14', change: '+3 this week', icon: FaCube, color: 'bg-red-500' },
+    { label: 'Orders (30 days)', value: '128', change: '+24%', icon: FaShoppingBag, color: 'bg-amber-500' },
+    { label: 'Payout ready', value: 'NRP 42,300', change: 'Next cycle: Friday', icon: FaMoneyBillWave, color: 'bg-emerald-500' },
+    { label: 'Store rating', value: '4.8', change: 'Based on 86 reviews', icon: FaStar, color: 'bg-blue-500' },
   ]
 
   const topProducts = [
-    { name: 'Handwoven Dhaka Scarf', sku: 'DHK-241', price: 'NRs 1,800', sold: 46, stock: 18, trend: '+18%' },
-    { name: 'Himalayan Organic Tea Pack', sku: 'TEA-112', price: 'NRs 950', sold: 32, stock: 42, trend: '+12%' },
-    { name: 'Lokta Paper Journal', sku: 'LKT-089', price: 'NRs 550', sold: 27, stock: 30, trend: '+9%' },
+    { name: 'Handwoven Dhaka Scarf', sku: 'DHK-241', price: 'NRP 1,800', sold: 46, stock: 18, trend: '+18%' },
+    { name: 'Himalayan Organic Tea Pack', sku: 'TEA-112', price: 'NRP 950', sold: 32, stock: 42, trend: '+12%' },
+    { name: 'Lokta Paper Journal', sku: 'LKT-089', price: 'NRP 550', sold: 27, stock: 30, trend: '+9%' },
   ]
 
   const recentOrders = [
-    { id: '#S-9827', customer: 'Sanjay Gurung', items: 3, total: 'NRs 3,450', status: 'Ready to ship', time: '18m ago' },
-    { id: '#S-9822', customer: 'Meena KC', items: 1, total: 'NRs 1,800', status: 'Delivered', time: '2h ago' },
-    { id: '#S-9819', customer: 'Global Crafts UK', items: 7, total: 'NRs 12,900', status: 'In transit', time: '5h ago' },
+    { id: '#S-9827', customer: 'Sanjay Gurung', items: 3, total: 'NRP 3,450', status: 'Ready to ship', time: '18m ago' },
+    { id: '#S-9822', customer: 'Meena KC', items: 1, total: 'NRP 1,800', status: 'Delivered', time: '2h ago' },
+    { id: '#S-9819', customer: 'Global Crafts UK', items: 7, total: 'NRP 12,900', status: 'In transit', time: '5h ago' },
   ]
 
   return (
@@ -50,7 +50,7 @@ const SellerDashboard = () => {
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <button className="flex items-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700">
-                  <ArrowTrendingUpIcon className="h-5 w-5" />
+                  <FaChartLine className="h-5 w-5" />
                   View analytics
                 </button>
               </div>

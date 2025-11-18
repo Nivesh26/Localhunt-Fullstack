@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import {
-  PlusIcon,
-  PencilSquareIcon,
-  TrashIcon,
-  CubeIcon,
-  CurrencyDollarIcon,
-} from '@heroicons/react/24/solid'
+  FaPlus,
+  FaEdit,
+  FaTrash,
+  FaCube,
+  FaDollarSign,
+} from 'react-icons/fa'
 import SellerNavbar from '../SellerComponents/SellerNavbar'
 import P1 from '../assets/P1.png'
 import P2 from '../assets/P2.png'
@@ -164,7 +164,7 @@ const SellerProduct = () => {
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="flex items-center gap-3 rounded-xl bg-red-50 px-3 py-3">
                   <div className="rounded-xl bg-red-600 p-2 text-white">
-                    <CubeIcon className="h-5 w-5" />
+                    <FaCube className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-500">Total products</p>
@@ -173,7 +173,7 @@ const SellerProduct = () => {
                 </div>
                 <div className="flex items-center gap-3 rounded-xl bg-emerald-50 px-3 py-3">
                   <div className="rounded-xl bg-emerald-500 p-2 text-white">
-                    <CurrencyDollarIcon className="h-5 w-5" />
+                    <FaDollarSign className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-500">Live products</p>
@@ -184,7 +184,7 @@ const SellerProduct = () => {
                 </div>
                 <div className="flex items-center gap-3 rounded-xl bg-amber-50 px-3 py-3">
                   <div className="rounded-xl bg-amber-500 p-2 text-white">
-                    <CubeIcon className="h-5 w-5" />
+                    <FaCube className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-500">Out of stock</p>
@@ -299,13 +299,13 @@ const SellerProduct = () => {
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="flex flex-col gap-1">
-                    <span className="text-xs font-medium text-gray-700">Price (NRs)</span>
+                    <span className="text-xs font-medium text-gray-700">Price (NRP)</span>
                     <input
                       value={price}
                       onChange={e => setPrice(e.target.value)}
                       type="number"
                       min="0"
-                      placeholder="Price in NRs"
+                      placeholder="Price in NRP"
                       className="rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-200"
                     />
                   </label>
@@ -327,7 +327,7 @@ const SellerProduct = () => {
                   onClick={handleAddProduct}
                   className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
                 >
-                  <PlusIcon className="h-5 w-5" />
+                  <FaPlus className="h-5 w-5" />
                   Add product
                 </button>
               </div>
@@ -392,7 +392,7 @@ const SellerProduct = () => {
                       </td>
                       <td className="px-4 py-3 text-gray-900">{product.name}</td>
                       <td className="px-4 py-3 text-gray-500">{product.sku}</td>
-                      <td className="px-4 py-3 font-semibold text-gray-900">NRs {product.price}</td>
+                      <td className="px-4 py-3 font-semibold text-gray-900">NRP {product.price}</td>
                       <td className="px-4 py-3 text-gray-500">{product.stock}</td>
                       <td className="px-4 py-3">
                         <span
@@ -439,13 +439,13 @@ const SellerProduct = () => {
                       <td className="px-4 py-3 text-right">
                         <div className="inline-flex items-center gap-2">
                           <button className="rounded-lg border border-gray-200 p-1.5 text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
-                            <PencilSquareIcon className="h-4 w-4" />
+                            <FaEdit className="h-4 w-4" />
                           </button>
                           <button
                             onClick={() => handleDelete(product.id)}
                             className="rounded-lg border border-red-200 p-1.5 text-red-500 hover:bg-red-50 hover:text-red-600"
                           >
-                            <TrashIcon className="h-4 w-4" />
+                            <FaTrash className="h-4 w-4" />
                           </button>
                         </div>
                       </td>

@@ -2,7 +2,7 @@ import Topbar from '../Components/Topbar'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
 import hero from '../assets/Hero.png'
-import { ShieldCheckIcon } from '@heroicons/react/24/solid'
+import { FaShieldAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 const documentFields = [
@@ -169,7 +169,7 @@ const Sellerlogin = () => {
 
                   <div className="space-y-4 rounded-2xl border border-dashed border-red-200 bg-red-50/70 p-4 text-xs text-red-700">
                     <div className="flex items-start gap-3">
-                      <ShieldCheckIcon className="h-4 w-4" />
+                      <FaShieldAlt className="h-4 w-4" />
                       <p>
                         Local Hunt verifies every seller to keep customers safe. Uploading your compliance documents now helps you get activated in under 48 hours.
                       </p>

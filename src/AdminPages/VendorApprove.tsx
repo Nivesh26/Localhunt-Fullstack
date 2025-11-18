@@ -1,11 +1,11 @@
 import AdminNavbar from '../AdminComponents/AdminNavbar'
 import {
-  MagnifyingGlassIcon,
-  FunnelIcon,
-  CheckBadgeIcon,
-  XMarkIcon,
-  DocumentArrowDownIcon,
-} from '@heroicons/react/24/solid'
+  FaSearch,
+  FaFilter,
+  FaCheckCircle,
+  FaTimes,
+  FaDownload,
+} from 'react-icons/fa'
 
 const vendorRequests = [
   {
@@ -51,7 +51,7 @@ const VendorApprove = () => {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="relative w-full sm:w-64">
-                  <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                  <FaSearch className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
                     placeholder="Search vendor or owner name..."
@@ -59,7 +59,7 @@ const VendorApprove = () => {
                   />
                 </div>
                 <button className="flex items-center gap-2 rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
-                  <FunnelIcon className="h-5 w-5" />
+                  <FaFilter className="h-5 w-5" />
                   Filters
                 </button>
               </div>
@@ -81,7 +81,7 @@ const VendorApprove = () => {
                     <div className="mt-4 flex flex-wrap gap-2 text-xs text-gray-600">
                       {request.documents.map(doc => (
                         <span key={doc} className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1">
-                          <DocumentArrowDownIcon className="h-4 w-4 text-gray-400" />
+                          <FaDownload className="h-4 w-4 text-gray-400" />
                           {doc}
                         </span>
                       ))}
@@ -90,14 +90,14 @@ const VendorApprove = () => {
 
                   <div className="flex flex-col gap-2 lg:w-64">
                     <button className="flex items-center justify-center gap-2 rounded-xl bg-green-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-600">
-                      <CheckBadgeIcon className="h-5 w-5" />
+                      <FaCheckCircle className="h-5 w-5" />
                       Approve Vendor
                     </button>
                     <button className="rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
                       Hold Request
                     </button>
                     <button className="flex items-center justify-center gap-2 rounded-xl border border-red-200 px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50">
-                      <XMarkIcon className="h-5 w-5" />
+                      <FaTimes className="h-5 w-5" />
                       Reject Request
                     </button>
                   </div>

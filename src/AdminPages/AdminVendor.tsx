@@ -1,8 +1,8 @@
 import AdminNavbar from '../AdminComponents/AdminNavbar'
 import {
-  MagnifyingGlassIcon,
-  FunnelIcon,
-} from '@heroicons/react/24/solid'
+  FaSearch,
+  FaFilter,
+} from 'react-icons/fa'
  
 const vendors = [
   {
@@ -50,7 +50,7 @@ const AdminVender = () => {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <div className="relative w-full sm:w-64">
-                  <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                  <FaSearch className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
                     placeholder="Search vendor or owner name..."
@@ -58,7 +58,7 @@ const AdminVender = () => {
                   />
                 </div>
                 <button className="flex items-center gap-2 rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
-                  <FunnelIcon className="h-5 w-5" />
+                  <FaFilter className="h-5 w-5" />
                   Filters
                 </button>
               </div>

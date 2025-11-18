@@ -1,23 +1,23 @@
 import {
-  HomeIcon,
-  CubeIcon,
-  ShoppingBagIcon,
-  BanknotesIcon,
-  ChatBubbleLeftRightIcon,
-  Cog6ToothIcon,
-} from '@heroicons/react/24/solid'
-import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid'
+  FaHome,
+  FaCube,
+  FaShoppingBag,
+  FaMoneyBillWave,
+  FaComments,
+  FaCog,
+  FaSignOutAlt,
+} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import logo from '../assets/Local Hunt Logo NoBG.png'
 import profileImage from '../assets/Nivesh.png'
 
 const navLinks = [
-  { label: 'Overview', icon: HomeIcon, to: '/sellerdashboard' },
-  { label: 'Products', icon: CubeIcon, to: '/sellerproduct' },
-  { label: 'Orders', icon: ShoppingBagIcon, to: '/sellerorder' },
-  { label: 'Payouts', icon: BanknotesIcon, to: '/sellerpayout' },
-  { label: 'Messages', icon: ChatBubbleLeftRightIcon, to: '/sellermessage' },
-  { label: 'Settings', icon: Cog6ToothIcon, to: '/sellersetting' },
+  { label: 'Overview', icon: FaHome, to: '/sellerdashboard' },
+  { label: 'Products', icon: FaCube, to: '/sellerproduct' },
+  { label: 'Orders', icon: FaShoppingBag, to: '/sellerorder' },
+  { label: 'Payouts', icon: FaMoneyBillWave, to: '/sellerpayout' },
+  { label: 'Messages', icon: FaComments, to: '/sellermessage' },
+  { label: 'Settings', icon: FaCog, to: '/sellersetting' },
 ]
 
 const SellerNavbar = () => {
@@ -42,7 +42,7 @@ const SellerNavbar = () => {
           </div>
 
           <button className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700">
-            <ArrowRightStartOnRectangleIcon className="h-4 w-4" />
+            <FaSignOutAlt className="h-4 w-4" />
             Switch to buying
           </button>
         </div>

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import {
-  MagnifyingGlassIcon,
-  PaperAirplaneIcon,
-  CheckCircleIcon,
-} from '@heroicons/react/24/outline'
-import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/solid'
+  FaSearch,
+  FaPaperPlane,
+  FaCheckCircle,
+  FaComments,
+} from 'react-icons/fa'
 import SellerNavbar from '../SellerComponents/SellerNavbar'
 
 type Message = {
@@ -192,7 +192,7 @@ const SellerMessage = () => {
               <div className="flex items-center gap-3">
                 {totalUnread > 0 && (
                   <div className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-2">
-                    <ChatBubbleLeftRightIcon className="h-5 w-5 text-red-600" />
+                    <FaComments className="h-5 w-5 text-red-600" />
                     <span className="text-sm font-semibold text-red-600">{totalUnread} unread</span>
                   </div>
                 )}
@@ -205,7 +205,7 @@ const SellerMessage = () => {
             <section className="rounded-2xl bg-white p-4 shadow-sm">
               <div className="mb-4">
                 <div className="relative">
-                  <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <FaSearch className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
                     value={searchQuery}
@@ -280,7 +280,7 @@ const SellerMessage = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-gray-500">
-                        <CheckCircleIcon className="h-4 w-4 text-emerald-500" />
+                        <FaCheckCircle className="h-4 w-4 text-emerald-500" />
                         <span>Active</span>
                       </div>
                     </div>
@@ -334,7 +334,7 @@ const SellerMessage = () => {
                         disabled={!replyText.trim()}
                         className="rounded-xl bg-red-600 p-3 text-white transition hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
                       >
-                        <PaperAirplaneIcon className="h-5 w-5" />
+                        <FaPaperPlane className="h-5 w-5" />
                       </button>
                     </div>
                     <p className="text-[11px] text-gray-400 mt-2">
@@ -345,7 +345,7 @@ const SellerMessage = () => {
               ) : (
                 <div className="flex h-full items-center justify-center text-gray-500">
                   <div className="text-center">
-                    <ChatBubbleLeftRightIcon className="h-12 w-12 mx-auto mb-3 text-gray-300" />
+                    <FaComments className="h-12 w-12 mx-auto mb-3 text-gray-300" />
                     <p className="text-sm">Select a conversation to view messages</p>
                   </div>
                 </div>

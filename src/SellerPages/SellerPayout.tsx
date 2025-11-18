@@ -1,33 +1,33 @@
 import {
-  BanknotesIcon,
-  CreditCardIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  ArrowDownTrayIcon,
-  ShieldCheckIcon,
-} from '@heroicons/react/24/solid'
+  FaMoneyBillWave,
+  FaCreditCard,
+  FaClock,
+  FaDollarSign,
+  FaDownload,
+  FaShieldAlt,
+} from 'react-icons/fa'
 import SellerNavbar from '../SellerComponents/SellerNavbar'
 
 const payoutSummary = [
   {
     label: 'Available balance',
-    value: 'NRs 82,400',
+    value: 'NRP 82,400',
     description: 'Ready to withdraw today',
-    icon: BanknotesIcon,
+    icon: FaMoneyBillWave,
     color: 'bg-emerald-50 text-emerald-600',
   },
   {
     label: 'Next payout date',
     value: '13 Feb, 2025',
     description: 'Weekly schedule • Thursday',
-    icon: ClockIcon,
+    icon: FaClock,
     color: 'bg-amber-50 text-amber-600',
   },
   {
     label: 'Pending verification',
-    value: 'NRs 14,250',
+    value: 'NRP 14,250',
     description: 'New orders in dispute hold',
-    icon: ShieldCheckIcon,
+    icon: FaShieldAlt,
     color: 'bg-blue-50 text-blue-600',
   },
 ]
@@ -35,7 +35,7 @@ const payoutSummary = [
 const payouts = [
   {
     id: '#P-4298',
-    amount: 'NRs 24,600',
+    amount: 'NRP 24,600',
     period: 'Jan 28 – Feb 02',
     method: 'Himalayan Bank • 9991',
     status: 'Settled',
@@ -43,7 +43,7 @@ const payouts = [
   },
   {
     id: '#P-4292',
-    amount: 'NRs 18,300',
+    amount: 'NRP 18,300',
     period: 'Jan 21 – Jan 27',
     method: 'Himalayan Bank • 9991',
     status: 'Settled',
@@ -51,7 +51,7 @@ const payouts = [
   },
   {
     id: '#P-4285',
-    amount: 'NRs 21,980',
+    amount: 'NRP 21,980',
     period: 'Jan 14 – Jan 20',
     method: 'Himalayan Bank • 9991',
     status: 'In review',
@@ -81,11 +81,11 @@ const SellerPayout = () => {
               </div>
               <div className="flex flex-wrap gap-3">
                 <button className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
-                  <CreditCardIcon className="h-5 w-5 text-gray-500" />
+                  <FaCreditCard className="h-5 w-5 text-gray-500" />
                   Manage bank accounts
                 </button>
                 <button className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700">
-                  <CurrencyDollarIcon className="h-5 w-5" />
+                  <FaDollarSign className="h-5 w-5" />
                   Request instant payout
                 </button>
               </div>
@@ -117,7 +117,7 @@ const SellerPayout = () => {
                   <p className="text-sm text-gray-500">Weekly settlements to your verified bank account.</p>
                 </div>
                 <button className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50">
-                  <ArrowDownTrayIcon className="h-4 w-4" />
+                  <FaDownload className="h-4 w-4" />
                   Export CSV
                 </button>
               </div>

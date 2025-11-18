@@ -5,7 +5,7 @@ import Header from '../Components/Header'
 import bowl from '../assets/Bowl.png'
 import cranes from '../assets/Swan.png'
 import incense from '../assets/p3.png'
-import { TrashIcon, PlusIcon, MinusIcon } from '@heroicons/react/16/solid'
+import { FaTrash, FaPlus, FaMinus } from 'react-icons/fa'
 
 // Sample cart data - in a real app, this would come from context or localStorage
 const sampleCartItems = [
@@ -112,7 +112,7 @@ const cart = () => {
                               className="p-2 hover:bg-gray-100 transition-colors"
                               aria-label="Decrease quantity"
                             >
-                              <MinusIcon className="w-5 h-5" />
+                              <FaMinus className="w-5 h-5" />
                             </button>
                             <span className="px-4 py-2 font-semibold text-gray-900 min-w-12 text-center">
                               {item.quantity}
@@ -122,7 +122,7 @@ const cart = () => {
                               className="p-2 hover:bg-gray-100 transition-colors"
                               aria-label="Increase quantity"
                             >
-                              <PlusIcon className="w-5 h-5" />
+                              <FaPlus className="w-5 h-5" />
                             </button>
                           </div>
                         </div>
@@ -134,7 +134,7 @@ const cart = () => {
                         className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors self-start"
                         aria-label="Remove from cart"
                       >
-                        <TrashIcon className="w-6 h-6" />
+                        <FaTrash className="w-6 h-6" />
                       </button>
                     </div>
 

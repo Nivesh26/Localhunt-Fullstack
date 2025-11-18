@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Topbar from '../Components/Topbar'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
-import { PencilIcon, CheckIcon, XMarkIcon, UserIcon, EnvelopeIcon, PhoneIcon, MapPinIcon, CreditCardIcon, LockClosedIcon } from '@heroicons/react/16/solid'
+import { FaEdit, FaCheck, FaTimes, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCreditCard, FaLock } from 'react-icons/fa'
 import profileImage from '../assets/Nivesh.png'
 
 // Sample user data - in a real app, this would come from context or API
@@ -72,7 +72,7 @@ const Profie = () => {
                     </div>
                   )}
                   <button className="absolute bottom-0 right-0 bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition">
-                    <PencilIcon className="w-4 h-4" />
+                    <FaEdit className="w-4 h-4" />
                   </button>
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">{userData.name}</h2>
@@ -102,14 +102,14 @@ const Profie = () => {
                       onClick={handleSave}
                       className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
                     >
-                      <CheckIcon className="w-5 h-5" />
+                      <FaCheck className="w-5 h-5" />
                       Save
                     </button>
                     <button
                       onClick={handleCancel}
                       className="flex items-center gap-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition"
                     >
-                      <XMarkIcon className="w-5 h-5" />
+                      <FaTimes className="w-5 h-5" />
                       Cancel
                     </button>
                   </div>
@@ -120,7 +120,7 @@ const Profie = () => {
                 {/* Full Name */}
                 <div>
                   <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
-                    <UserIcon className="w-5 h-5 text-red-600" />
+                    <FaUser className="w-5 h-5 text-red-600" />
                     Full Name
                   </label>
                   {isEditing ? (
@@ -139,7 +139,7 @@ const Profie = () => {
                 {/* Email */}
                 <div>
                   <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
-                    <EnvelopeIcon className="w-5 h-5 text-red-600" />
+                    <FaEnvelope className="w-5 h-5 text-red-600" />
                     Email Address
                   </label>
                   {isEditing ? (
@@ -158,7 +158,7 @@ const Profie = () => {
                 {/* Phone */}
                 <div>
                   <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
-                    <PhoneIcon className="w-5 h-5 text-red-600" />
+                    <FaPhone className="w-5 h-5 text-red-600" />
                     Phone Number
                   </label>
                   {isEditing ? (
@@ -177,7 +177,7 @@ const Profie = () => {
                 {/* Address */}
                 <div>
                   <label className="flex items-center gap-2 text-gray-700 font-medium mb-2">
-                    <MapPinIcon className="w-5 h-5 text-red-600" />
+                    <FaMapMarkerAlt className="w-5 h-5 text-red-600" />
                     Address
                   </label>
                   {isEditing ? (
@@ -202,7 +202,7 @@ const Profie = () => {
               <div className="space-y-4">
                 <button className="w-full flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
                   <div className="flex items-center gap-3">
-                    <LockClosedIcon className="w-5 h-5 text-red-600" />
+                    <FaLock className="w-5 h-5 text-red-600" />
                     <span className="font-medium text-gray-900">Change Password</span>
                   </div>
                   <span className="text-gray-400">→</span>
@@ -210,7 +210,7 @@ const Profie = () => {
 
                 <button className="w-full flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
                   <div className="flex items-center gap-3">
-                    <CreditCardIcon className="w-5 h-5 text-red-600" />
+                    <FaCreditCard className="w-5 h-5 text-red-600" />
                     <span className="font-medium text-gray-900">Purchase History</span>
                   </div>
                   <span className="text-gray-400">→</span>

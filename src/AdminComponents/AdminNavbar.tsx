@@ -1,21 +1,20 @@
 import {
-  HomeIcon,
-  BuildingStorefrontIcon,
-  CubeIcon,
-  ShieldCheckIcon,
-  UserPlusIcon,
-} from '@heroicons/react/24/solid'
-import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid'
+  FaHome,
+  FaStore,
+  FaCube,
+  FaShieldAlt,
+  FaSignOutAlt,
+} from 'react-icons/fa'
 import logo from '../assets/Local Hunt Logo NoBG.png'
 import profileImage from '../assets/Nivesh.png'
 import { Link } from 'react-router-dom'
 
 const navLinks = [
-  { label: 'Overview', icon: HomeIcon, to: '/admindashboard' },
-  { label: 'Vendors', icon: BuildingStorefrontIcon, to: '/adminvendors' },
-  { label: 'Approve Vendors', icon: ShieldCheckIcon, to: '/adminvendorsapprove  ' },
-  { label: 'Products', icon: CubeIcon, to: '/adminproducts' },
-  { label: 'Settings', icon: ShieldCheckIcon, to: '/adminsettings' },
+  { label: 'Overview', icon: FaHome, to: '/admindashboard' },
+  { label: 'Vendors', icon: FaStore, to: '/adminvendors' },
+  { label: 'Approve Vendors', icon: FaShieldAlt, to: '/adminvendorsapprove  ' },
+  { label: 'Products', icon: FaCube, to: '/adminproducts' },
+  { label: 'Settings', icon: FaShieldAlt, to: '/adminsettings' },
 ]
 
 
@@ -43,7 +42,7 @@ const AdminNavbar = () => {
           </div>
           
           <button className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700">
-            <ArrowRightStartOnRectangleIcon className="h-4 w-4" />
+            <FaSignOutAlt className="h-4 w-4" />
             Switch Account
           </button>
         </div>
