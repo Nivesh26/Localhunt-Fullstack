@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import axios from "axios";
 
 const Signup_form = () => {
+
+ const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -36,7 +40,7 @@ const Signup_form = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: typeof errors = {};
 
@@ -73,8 +77,16 @@ const Signup_form = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      // Form is valid, proceed with registration
-      console.log('Registration submitted:', formData);
+    
+      try {
+        const res = await axios.post("http://localhost:8080/api/auth/register",formData);
+        if ( res.data.statusCode == "CREATED") {
+          navigate("/login" )
+        }
+      } catch ( error) {
+        console.log('Registration submitted:', error);
+      }
+
     }
   };
 
@@ -171,7 +183,7 @@ const Signup_form = () => {
           </div>
 
           {/* Register Button */}
-          <button type="submit" className="w-full bg-red-500 text-white py-2 rounded-full font-semibold hover:bg-red-600 transition">
+          <button onClick={handleSubmit} type="submit" className="w-full bg-red-500 text-white py-2 rounded-full font-semibold hover:bg-red-600 transition">
             Register
           </button>
         </form>
