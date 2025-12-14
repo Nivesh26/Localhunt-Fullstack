@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login_form = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,22 +39,21 @@ const Login_form = () => {
       try {
         const res = await axios.post("http://localhost:8080/api/auth/login", {
          username , password
-        }, {
-         
         });
-
         localStorage.setItem("userdate", JSON.stringify(res.data))
 
-        
+        if(res.data.user.role === "ADMIN"){
+          navigate("/admindashboard");
+        }
+        else{
+          navigate("/");
 
-       const data =  localStorage.getItem("userdate")
-      }
+        }
+    }
+  
     catch ( error) {
       console.log(error)
     }
-
-
-
 
       console.log('Login submitted:', { email, password });
     }

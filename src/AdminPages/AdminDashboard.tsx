@@ -9,8 +9,40 @@ import {
   FaSignOutAlt,
 } from 'react-icons/fa'
 import AdminNavbar from '../AdminComponents/AdminNavbar'
+import React, { useState, useEffect, use } from 'react'
+
 
 const AdminDashboard = () => {
+
+
+    const [ userData, setUserData] = useState<{
+    email: string;
+    fullName: string;
+    id: string;
+    phone: string;
+    role: string;
+  }>();
+
+
+     // Get  data form local storage and parse it using useeffect
+     useEffect(
+       () => {
+         const data = localStorage.getItem("userdate");
+         if (data) {
+           const parsedData = JSON.parse(data);
+
+            // if normal user try to access admin dashboard without admin role, redirect to login and clear localstorage
+            if ( parsedData.user.role !== "ADMIN") {
+              localStorage.removeItem("userdate");
+              window.location.href = "/login";
+            }
+
+            setUserData(parsedData.user);
+         }
+       }, []
+       )
+
+       
   const statCards = [
     { label: 'Total Vendors', value: '10',  icon: FaStore, color: 'bg-red-500' },
     { label: 'Active Products', value: '18',  icon: FaCube, color: 'bg-blue-500' },
@@ -36,6 +68,20 @@ const AdminDashboard = () => {
     { id: '#4522', vendor: 'Lotus Crafts', topic: 'Listing Visibility', priority: 'Medium', time: '1h ago' },
     { id: '#4519', vendor: 'Summit Gear', topic: 'Return Dispute', priority: 'High', time: '2h ago' },
   ]
+
+
+
+
+      const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if ( userData?.email ) {
+        localStorage.removeItem("userdate");
+        window.location.href = "/login";
+      } else {
+        console.log("No user is currently logged in.");
+        window.location.href = "/login";
+      }
+    }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -69,7 +115,7 @@ const AdminDashboard = () => {
                   Alerts
                 </button>
 
-                <button className="flex items-center gap-2 rounded-xl border border-red-200 px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-50">
+                <button onClick={handleLogout} className="flex items-center gap-2 rounded-xl border border-red-200 px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-50">
                   <FaSignOutAlt className="h-5 w-5" />
                   Log Out
                 </button>

@@ -1,9 +1,34 @@
-import React from "react";
+
+import { useEffect, useState } from "react";
 import profile from "../assets/Local Hunt Logo NoBG.png";
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  
+  // State to hold user data
+  const [ userData, setUserData] = useState<{
+    email: string;
+    fullName: string;
+    id: string;
+    phone: string;
+    role: string;
+  }>();
+
+
+  // Get  data form local storage and parse it using useeffect
+  useEffect( 
+    () => {
+      const data = localStorage.getItem("userdate");
+      if (data) {
+         const parsedData = JSON.parse(data);
+        //  console.log("Parsed User Data:", parsedData);
+          setUserData(parsedData.user);
+      }
+    }, []
+) 
+
+
   return (
     <div className="flex items-center justify-between px-[80px] py-4 shadow-sm bg-white">
       {/* Logo */}
@@ -46,10 +71,18 @@ const Header = () => {
         <Link to="/cart">
         <FaShoppingCart className="w-6 h-6 text-gray-700 hover:text-red-600 cursor-pointer" />
         </Link>
-        {/* Login Link */}
-        <Link to="/login" className="text-gray-700 hover:text-red-600 font-medium">
-          Login
+
+      {
+        userData?.id ? (
+          <Link to="/profile" className="text-gray-700 hover:text-red-600 font-medium flex items-center space-x-2">
+            <FaUser/>
+          </Link>
+        ) : (
+          <Link to="/login" className="text-gray-700 hover:text-red-600 font-medium">
+            Login
         </Link>
+        )
+      }
       </div>
     </div>
   );

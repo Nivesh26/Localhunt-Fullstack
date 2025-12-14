@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Topbar from '../Components/Topbar'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
-import { FaEdit, FaCheck, FaTimes, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCreditCard, FaLock } from 'react-icons/fa'
+import { FaEdit, FaCheck, FaTimes, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCreditCard, FaLock, FaSignOutAlt } from 'react-icons/fa'
 import profileImage from '../assets/Nivesh.png'
 
 // Sample user data - in a real app, this would come from context or API
 const initialUserData = {
-  name: 'Nivesh Shrestha',
+  fullName: 'Nivesh Shrestha',
   email: 'niveshshrestha@gmail.com',
   phone: '9876543210',
   address: 'Pulchowk, Lalitpur',
@@ -18,6 +18,30 @@ const Profie = () => {
   const [userData, setUserData] = useState(initialUserData)
   const [isEditing, setIsEditing] = useState(false)
   const [editForm, setEditForm] = useState(initialUserData)
+
+
+  // Get  data form local storage and parse it using useeffect
+  useEffect(
+    () => {
+      const data = localStorage.getItem("userdate");
+      if (data) {
+        const parsedData = JSON.parse(data);
+        setUserData(parsedData.user);
+      }
+    }, []
+    )
+
+    const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if ( userData.email ) {
+        localStorage.removeItem("userdate");
+        window.location.href = "/login";
+      } else {
+        console.log("No user is currently logged in.");
+        window.location.href = "/login";
+      }
+    }
+
 
   const handleEdit = () => {
     setEditForm(userData)
@@ -44,9 +68,9 @@ const Profie = () => {
   const handleSave = () => {
     const newErrors: typeof errors = {}
 
-    if (!editForm.name.trim()) {
+    if (!editForm.fullName.trim()) {
       newErrors.name = 'Name is required'
-    } else if (editForm.name.trim().length < 2) {
+    } else if (editForm.fullName.trim().length < 2) {
       newErrors.name = 'Name must be at least 2 characters'
     }
 
@@ -112,19 +136,19 @@ const Profie = () => {
                   {userData.avatar ? (
                     <img
                       src={userData.avatar}
-                      alt={userData.name}
+                      alt={userData.fullName}
                       className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mx-auto mb-4"
                     />
                   ) : (
                     <div className="w-32 h-32 rounded-full bg-linear-to-br from-red-500 to-red-600 flex items-center justify-center text-white text-4xl font-bold mx-auto mb-4">
-                      {userData.name.charAt(0).toUpperCase()}
+                      {userData.fullName.charAt(0).toUpperCase()}
                     </div>
                   )}
                   <button className="absolute bottom-0 right-0 bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition">
                     <FaEdit className="w-4 h-4" />
                   </button>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900">{userData.name}</h2>
+                <h2 className="text-2xl font-bold text-gray-900">{userData.fullName}</h2>
                 <p className="text-gray-600">{userData.email}</p>
               </div>
 
@@ -177,7 +201,7 @@ const Profie = () => {
                       <input
                         type="text"
                         name="name"
-                        value={editForm.name}
+                        value={editForm.fullName}
                         onChange={handleChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent ${
                           errors.name ? 'border-red-500' : 'border-gray-300'
@@ -186,7 +210,7 @@ const Profie = () => {
                       {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </>
                   ) : (
-                    <p className="text-gray-900 text-lg">{userData.name}</p>
+                    <p className="text-gray-900 text-lg">{userData.fullName}</p>
                   )}
                 </div>
 
@@ -281,6 +305,14 @@ const Profie = () => {
                   <div className="flex items-center gap-3">
                     <FaCreditCard className="w-5 h-5 text-red-600" />
                     <span className="font-medium text-gray-900">Purchase History</span>
+                  </div>
+                  <span className="text-gray-400">→</span>
+                </button>
+
+                 <button onClick={handleLogout} className="w-full flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                  <div className="flex items-center gap-3">
+                    <FaSignOutAlt className="w-5 h-5 text-red-600" />
+                    <span className="font-medium text-gray-900">Logout</span>
                   </div>
                   <span className="text-gray-400">→</span>
                 </button>
