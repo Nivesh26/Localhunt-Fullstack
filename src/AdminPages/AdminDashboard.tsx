@@ -9,11 +9,11 @@ import {
   FaSignOutAlt,
 } from 'react-icons/fa'
 import AdminNavbar from '../AdminComponents/AdminNavbar'
-import React, { useState, useEffect, use } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 
 
 const AdminDashboard = () => {
-
+  const [searchTerm, setSearchTerm] = useState('');
 
     const [ userData, setUserData] = useState<{
     email: string;
@@ -50,24 +50,56 @@ const AdminDashboard = () => {
     { label: 'Pending Verifications', value: '32', icon: FaShieldAlt, color: 'bg-amber-500' },
   ]
 
-  const topVendors = [
+  const allTopVendors = [
     { name: 'Virinchi College', category: 'Handmade', orders: 982, growth: '+18%', rating: 4.9 },
     { name: 'General Mechanical Store', category: 'Gourmet Foods', orders: 756, growth: '+12%', rating: 4.8 },
     { name: 'Momomia Cafe', category: 'Apparel', orders: 604, growth: '+9%', rating: 4.7 },
     { name: 'Lumbini Herbal Store', category: 'Home Decor', orders: 488, growth: '+7%', rating: 4.6 },
   ]
 
-  const onboardingRequests = [
+  const allOnboardingRequests = [
     { store: 'Nepal Spice Hub', owner: 'Meera Thapa', submitted: '2h ago', docs: 'GST & Bank Statement', status: 'High Priority' },
     { store: 'Sherpa Leather', owner: 'Nima Sherpa', submitted: '5h ago', docs: 'ID Pending', status: 'Follow-up' },
     { store: 'EcoLife Essentials', owner: 'Anil Shrestha', submitted: 'Yesterday', docs: 'Complete', status: 'Ready to Approve' },
   ]
 
-  const supportTickets = [
+  const allSupportTickets = [
     { id: '#4527', vendor: 'Mountain Brew Co.', topic: 'Payout Delay', priority: 'High', time: '14m ago' },
     { id: '#4522', vendor: 'Lotus Crafts', topic: 'Listing Visibility', priority: 'Medium', time: '1h ago' },
     { id: '#4519', vendor: 'Summit Gear', topic: 'Return Dispute', priority: 'High', time: '2h ago' },
   ]
+
+  const topVendors = useMemo(() => {
+    if (!searchTerm.trim()) return allTopVendors;
+    const term = searchTerm.toLowerCase();
+    return allTopVendors.filter(
+      vendor => 
+        vendor.name.toLowerCase().includes(term) ||
+        vendor.category.toLowerCase().includes(term)
+    );
+  }, [searchTerm]);
+
+  const onboardingRequests = useMemo(() => {
+    if (!searchTerm.trim()) return allOnboardingRequests;
+    const term = searchTerm.toLowerCase();
+    return allOnboardingRequests.filter(
+      request =>
+        request.store.toLowerCase().includes(term) ||
+        request.owner.toLowerCase().includes(term) ||
+        request.status.toLowerCase().includes(term)
+    );
+  }, [searchTerm]);
+
+  const supportTickets = useMemo(() => {
+    if (!searchTerm.trim()) return allSupportTickets;
+    const term = searchTerm.toLowerCase();
+    return allSupportTickets.filter(
+      ticket =>
+        ticket.vendor.toLowerCase().includes(term) ||
+        ticket.topic.toLowerCase().includes(term) ||
+        ticket.id.toLowerCase().includes(term)
+    );
+  }, [searchTerm]);
 
 
 
@@ -105,6 +137,8 @@ const AdminDashboard = () => {
                   <FaSearch className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search vendors, orders, products..."
                     className="w-full rounded-xl border border-gray-200 py-2 pl-10 pr-4 text-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200"
                   />
@@ -150,43 +184,55 @@ const AdminDashboard = () => {
               </div>
 
               <div className="mt-5 space-y-4">
-                {topVendors.map(vendor => (
-                  <div key={vendor.name} className="rounded-xl border border-gray-100 px-4 py-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">{vendor.name}</p>
-                        <p className="text-xs text-gray-500">{vendor.category}</p>
-                      </div>
-                      <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-600">{vendor.growth}</span>
-                    </div>
-                    <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
-                      <span>{vendor.orders} orders</span>
-                      <span>Rating {vendor.rating}/5</span>
-                    </div>
-                    <div className="mt-2 h-2 rounded-full bg-gray-100">
-                      <div className="h-full rounded-full bg-red-500" style={{ width: `${Math.min(100, vendor.orders / 10)}%` }} />
-                    </div>
+                {topVendors.length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-gray-200 py-8 text-center text-sm text-gray-500">
+                    No vendors found matching your search.
                   </div>
-                ))}
+                ) : (
+                  topVendors.map(vendor => (
+                    <div key={vendor.name} className="rounded-xl border border-gray-100 px-4 py-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-semibold text-gray-900">{vendor.name}</p>
+                          <p className="text-xs text-gray-500">{vendor.category}</p>
+                        </div>
+                        <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-600">{vendor.growth}</span>
+                      </div>
+                      <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
+                        <span>{vendor.orders} orders</span>
+                        <span>Rating {vendor.rating}/5</span>
+                      </div>
+                      <div className="mt-2 h-2 rounded-full bg-gray-100">
+                        <div className="h-full rounded-full bg-red-500" style={{ width: `${Math.min(100, vendor.orders / 10)}%` }} />
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </article>
 
             <article className="rounded-2xl bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900">Onboarding Queue</h2>
               <p className="text-sm text-gray-500">Vendors awaiting verification or review</p>
-              <ul className="mt-4 space-y-4">
-                {onboardingRequests.map(request => (
-                  <li key={request.store} className="rounded-xl border border-gray-100 p-4">
-                    <p className="text-sm font-semibold text-gray-900">{request.store}</p>
-                    <p className="text-xs text-gray-500">Owner: {request.owner}</p>
-                    <p className="text-xs text-gray-500">Documents: {request.docs}</p>
-                    <div className="mt-3 flex items-center justify-between text-xs">
-                      <span className="text-gray-400">{request.submitted}</span>
-                      <span className="rounded-full bg-amber-50 px-3 py-1 font-medium text-amber-600">{request.status}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              {onboardingRequests.length === 0 ? (
+                <div className="mt-4 rounded-xl border border-dashed border-gray-200 py-8 text-center text-sm text-gray-500">
+                  No requests found matching your search.
+                </div>
+              ) : (
+                <ul className="mt-4 space-y-4">
+                  {onboardingRequests.map(request => (
+                    <li key={request.store} className="rounded-xl border border-gray-100 p-4">
+                      <p className="text-sm font-semibold text-gray-900">{request.store}</p>
+                      <p className="text-xs text-gray-500">Owner: {request.owner}</p>
+                      <p className="text-xs text-gray-500">Documents: {request.docs}</p>
+                      <div className="mt-3 flex items-center justify-between text-xs">
+                        <span className="text-gray-400">{request.submitted}</span>
+                        <span className="rounded-full bg-amber-50 px-3 py-1 font-medium text-amber-600">{request.status}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
               <button className="mt-4 w-full rounded-xl border border-gray-200 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
                 Open vendor pipeline
               </button>

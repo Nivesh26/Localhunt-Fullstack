@@ -37,9 +37,9 @@ const Footer = () => {
             <ul className="list-none p-0 text-sm">
               <li className="mb-2.5 cursor-pointer">Mask</li>
               <li className="mb-2.5 cursor-pointer">Handmade</li>
-              <li className="mb-2.5 cursor-pointer">nepal</li>
-              <li className="mb-2.5 cursor-pointer">Nepal</li>
-              <li className="mb-2.5 cursor-pointer">Nepal</li>
+              <li className="mb-2.5 cursor-pointer">Food</li>
+              <li className="mb-2.5 cursor-pointer">Crafts</li>
+              <li className="mb-2.5 cursor-pointer">Clothing</li>
             </ul>
           </div>
 

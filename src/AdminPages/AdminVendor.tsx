@@ -3,8 +3,9 @@ import {
   FaSearch,
   FaFilter,
 } from 'react-icons/fa'
+import { useMemo, useState } from 'react'
  
-const vendors = [
+const allVendors = [
   {
     name: 'Virinchi College',
     owner: 'Hacker',
@@ -36,6 +37,19 @@ const vendors = [
 ]
  
 const AdminVender = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const vendors = useMemo(() => {
+    if (!searchTerm.trim()) return allVendors;
+    const term = searchTerm.toLowerCase();
+    return allVendors.filter(
+      vendor =>
+        vendor.name.toLowerCase().includes(term) ||
+        vendor.owner.toLowerCase().includes(term) ||
+        vendor.category.toLowerCase().includes(term)
+    );
+  }, [searchTerm]);
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="mx-auto flex max-w-7xl gap-6 px-6 py-8">
@@ -53,6 +67,8 @@ const AdminVender = () => {
                   <FaSearch className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search vendor or owner name..."
                     className="w-full rounded-xl border border-gray-200 py-2 pl-10 pr-4 text-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200"
                   />
@@ -70,28 +86,34 @@ const AdminVender = () => {
             <p className="text-sm text-gray-500">List of all active vendors on Local Hunt with recent performance.</p>
 
             <div className="mt-5 overflow-x-auto">
-              <table className="min-w-full text-left text-sm">
-                <thead>
-                  <tr className="text-gray-500">
-                    <th className="py-2 pr-6 font-medium">Vendor</th>
-                    <th className="py-2 pr-6 font-medium">Owner</th>
-                    <th className="py-2 pr-6 font-medium">Category</th>
-                    <th className="py-2 pr-6 font-medium">GMV (30d)</th>
-                    <th className="py-2 pr-6 font-medium">Orders</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 text-gray-700">
-                  {vendors.map(vendor => (
-                    <tr key={vendor.name} className="hover:bg-gray-50">
-                      <td className="py-3 pr-6 font-semibold text-gray-900">{vendor.name}</td>
-                      <td className="py-3 pr-6">{vendor.owner}</td>
-                      <td className="py-3 pr-6">{vendor.category}</td>
-                      <td className="py-3 pr-6">{vendor.gmv}</td>
-                      <td className="py-3 pr-6">{vendor.orders}</td>
+              {vendors.length === 0 ? (
+                <div className="rounded-xl border border-dashed border-gray-200 py-12 text-center text-sm text-gray-500">
+                  No vendors found matching your search.
+                </div>
+              ) : (
+                <table className="min-w-full text-left text-sm">
+                  <thead>
+                    <tr className="text-gray-500">
+                      <th className="py-2 pr-6 font-medium">Vendor</th>
+                      <th className="py-2 pr-6 font-medium">Owner</th>
+                      <th className="py-2 pr-6 font-medium">Category</th>
+                      <th className="py-2 pr-6 font-medium">GMV (30d)</th>
+                      <th className="py-2 pr-6 font-medium">Orders</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 text-gray-700">
+                    {vendors.map(vendor => (
+                      <tr key={vendor.name} className="hover:bg-gray-50">
+                        <td className="py-3 pr-6 font-semibold text-gray-900">{vendor.name}</td>
+                        <td className="py-3 pr-6">{vendor.owner}</td>
+                        <td className="py-3 pr-6">{vendor.category}</td>
+                        <td className="py-3 pr-6">{vendor.gmv}</td>
+                        <td className="py-3 pr-6">{vendor.orders}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           </section>
 

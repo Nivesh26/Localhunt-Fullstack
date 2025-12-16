@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useMemo, useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Header from "../Components/Header";
 import Topbar from "../Components/Topbar";
 import Footer from "../Components/Footer";
@@ -23,15 +23,28 @@ const productsData = [
 ];
 
 const Shop = () => {
+  const [searchParams] = useSearchParams();
   const [category, setCategory] = useState("All");
   const [priceRange, setPriceRange] = useState([0, 200]);
   const [sortOption, setSortOption] = useState("featured");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const search = searchParams.get("search");
+    if (search) {
+      setSearchQuery(search);
+    }
+  }, [searchParams]);
 
   const filteredProducts = useMemo(() => {
     const filtered = productsData.filter((product) => {
       const matchCategory = category === "All" || product.category === category;
       const matchPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
-      return matchCategory && matchPrice;
+      const matchSearch = 
+        !searchQuery.trim() || 
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchCategory && matchPrice && matchSearch;
     });
 
     const sorted = [...filtered];
@@ -52,7 +65,7 @@ const Shop = () => {
         break;
     }
     return sorted;
-  }, [category, priceRange, sortOption]);
+  }, [category, priceRange, sortOption, searchQuery]);
 
   const resetFilters = () => {
     setCategory("All");

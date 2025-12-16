@@ -2,9 +2,11 @@
 import { useEffect, useState } from "react";
 import profile from "../assets/Local Hunt Logo NoBG.png";
 import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
   
   // State to hold user data
   const [ userData, setUserData] = useState<{
@@ -59,14 +61,26 @@ const Header = () => {
 
       {/* Search + Cart/Login */}
       <div className="flex items-center space-x-4">
-        <div className="relative">
+        <form 
+          className="relative"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (searchQuery.trim()) {
+              navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+            }
+          }}
+        >
           <input
             type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search..."
             className="pl-10 pr-4 py-2 border rounded-full text-sm"
           />
-          <FaSearch className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
-        </div>
+          <button type="submit" className="absolute left-3 top-2.5 text-gray-400 hover:text-gray-600">
+            <FaSearch className="w-5 h-5" />
+          </button>
+        </form>
 
         <Link to="/cart">
         <FaShoppingCart className="w-6 h-6 text-gray-700 hover:text-red-600 cursor-pointer" />

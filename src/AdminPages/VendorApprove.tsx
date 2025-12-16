@@ -6,8 +6,9 @@ import {
   FaTimes,
   FaDownload,
 } from 'react-icons/fa'
+import { useMemo, useState } from 'react'
 
-const vendorRequests = [
+const allVendorRequests = [
   {
     id: '#A1',
     store: 'Nepal Handicrafts',
@@ -35,6 +36,20 @@ const vendorRequests = [
 ]
 
 const VendorApprove = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const vendorRequests = useMemo(() => {
+    if (!searchTerm.trim()) return allVendorRequests;
+    const term = searchTerm.toLowerCase();
+    return allVendorRequests.filter(
+      request =>
+        request.store.toLowerCase().includes(term) ||
+        request.owner.toLowerCase().includes(term) ||
+        request.id.toLowerCase().includes(term) ||
+        request.notes.toLowerCase().includes(term)
+    );
+  }, [searchTerm]);
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="mx-auto flex max-w-7xl gap-6 px-6 py-8">
@@ -54,6 +69,8 @@ const VendorApprove = () => {
                   <FaSearch className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
                   <input
                     type="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search vendor or owner name..."
                     className="w-full rounded-xl border border-gray-200 py-2 pl-10 pr-4 text-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200"
                   />
@@ -67,8 +84,13 @@ const VendorApprove = () => {
           </header>
 
           <section className="space-y-4">
-            {vendorRequests.map(request => (
-              <article key={request.id} className="rounded-2xl bg-white p-6 shadow-sm">
+            {vendorRequests.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-gray-200 bg-white py-12 text-center text-sm text-gray-500">
+                No vendor requests found matching your search.
+              </div>
+            ) : (
+              vendorRequests.map(request => (
+                <article key={request.id} className="rounded-2xl bg-white p-6 shadow-sm">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                   <div>
                     <div className="flex items-center gap-3">
@@ -103,7 +125,8 @@ const VendorApprove = () => {
                   </div>
                 </div>
               </article>
-            ))}
+              ))
+            )}
           </section>
         </main>
       </div>
